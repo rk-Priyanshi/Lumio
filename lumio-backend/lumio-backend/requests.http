@@ -1,0 +1,46 @@
+### VS Code "REST Client" extension file. Click "Send Request" above any request.
+@base = http://localhost:5000/api
+
+### Health
+GET {{base}}/health
+
+### List (first page, newest added first)
+GET {{base}}/movies
+
+### Search + filters + sort + pagination
+GET {{base}}/movies?search=inter&genre=Sci-Fi,Drama&min_rating=7.5&year_min=2000&sort=rating&order=desc&page=1&limit=20
+
+### One movie with cast / directors / platforms
+GET {{base}}/movies/1
+
+### Create a movie
+POST {{base}}/movies
+Content-Type: application/json
+
+{
+  "title": "Example Movie",
+  "release_year": 2024,
+  "genre": "Drama, Thriller",
+  "imdb_rating": 8.2,
+  "runtime": 120,
+  "age_rating": "PG-13",
+  "language": "English",
+  "ott_platform": "Netflix",
+  "description": "Example description",
+  "poster_url": null
+}
+
+### Validation failure (expect 400 with per-field errors)
+POST {{base}}/movies
+Content-Type: application/json
+
+{ "title": "", "release_year": 1700, "imdb_rating": 11 }
+
+### Lookups
+GET {{base}}/genres
+###
+GET {{base}}/languages
+###
+GET {{base}}/platforms
+###
+GET {{base}}/stats

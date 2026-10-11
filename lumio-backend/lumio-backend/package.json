@@ -1,0 +1,27 @@
+{
+  "name": "lumio-backend",
+  "version": "1.1.0",
+  "description": "Express + MySQL API for Lumio (movie & OTT management)",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "db:init": "node scripts/initDb.js",
+    "db:init:test": "node scripts/initDb.js --test",
+    "db:import": "node scripts/importDataset.js",
+    "test": "node --test",
+    "test:unit": "node --test tests/unit/validateMovie.test.js tests/unit/movieQuery.test.js tests/unit/datasetTransform.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
